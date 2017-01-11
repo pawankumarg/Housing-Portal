@@ -1,0 +1,794 @@
+
+
+<style>
+    .fixedBtn{
+        position: fixed;
+        top: 45px;
+        right: 24px;
+        border-radius: 25px;
+        background-color: #00c0ef;
+        color: white;
+        font-size: 20px;
+        vertical-align: middle;
+        z-index: 1;
+        will-change: opacity, transform;
+        transition: all .3s ease-out;
+        height: 54px;
+        line-height: 56px;
+        padding: 0 2rem;
+        text-transform: uppercase;
+        cursor: pointer;
+    } 
+    fieldset {
+    border: 1px solid #949090 !important;
+    margin: 0 auto !important;
+    padding: 0.35em 8.625em 0.75em !important;
+    border-radius: 10px !important;
+    background-color: rgba(192, 208, 208, 0.1) !important;
+}
+    legend{
+        
+            width: 59%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 33px;
+    font-weight: 400;
+    }
+    #coverimage{
+               /*margin: -25px;*/
+    }
+    #jumboton{
+            height: 70%;
+            background-color: #b3ffd9;
+        margin-bottom: auto;
+    }
+    
+    .snapshot {
+    background: #37383A;
+    border-top: 1px solid #37383A;
+    border-bottom: 1px solid #37383A;
+    height:90px;
+        margin-top: -1.5%;
+}
+    .snapContains{
+        color:white;
+    }
+    .fontIcon{
+        margin-top: 70%;
+    }
+    #dvMap {
+    width: 450px;
+    height: 450px;
+        border: 1px solid;
+}
+   
+    #map {
+    height:520px;
+    width:800px;
+    }
+ .container1{
+/*        background-color: ghostwhite;*/
+     margin: auto;
+     width: 85%;
+    }
+    .container2{
+       color: floralwhite;
+    }
+    .collapsHead{
+            color: #039be5;
+    background-color: azure;
+    }
+    .collapsHeadIcon{
+            color: #FF5400;
+    }
+    .headTitle{
+        color: #291919;
+    }
+    
+    /**/
+    .outerOverlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999999;
+    background-color: rgba(26, 23, 23, 0.78);
+    transition: all 1.5s ease;
+    overflow: auto;
+}
+
+.InnerDiv {
+    width: 60%;
+    height: 50%;
+    background-color: rgb(255, 255, 255);
+    transition: all 1.5s ease;
+    border-radius: 1em;
+    margin-left: 22%;
+    margin-top: 10%;
+}
+
+    .InnerDiv.animate {
+        left: 70%;
+        width: 0%;
+        height: 0%;
+        margin-left: 50%;
+        margin-top: 38%;
+        background: rgb(176, 223, 96);
+        border-radius: 100%;
+    }
+
+
+
+.MessageSent {
+    position: absolute;
+    top: 49%;
+    left: 40%;
+    color: rgba(175, 237, 153, 0.91);
+}
+
+.row.formRow {
+    height: 100%;
+}
+
+.FormColLeft {
+    height: 100%;
+    width: 78.333333% !important;
+    background-color: #ffd699;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+
+.formColRight {
+    height: 100%;
+    padding: 0px;
+    width: 21.666667% !important;
+    ;
+    background-color: aquamarine;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    transition: all 1.5s ease;
+}
+
+.formColRight.Invalid {
+        background-color: rgba(237, 16, 36, 0.82);
+    }
+
+.planeDiv {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    margin: 9% 3%;
+    cursor: pointer;
+}
+
+.cancelDiv {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    margin: 23% 3.5%;
+    font-size: 3.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cancelText {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    margin: 29% 3%;
+    cursor: pointer;
+}
+/*Material CSS*/
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v13/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+/* label color */
+
+.input-field label {
+    color: rgb(4, 197, 137);
+}
+/* label focus color */
+
+.input-field input[type=text]:focus + label {
+    color: #000;
+}
+/* label underline focus color */
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #14E6A4;
+    box-shadow: 0 1px 0 0 #14E6A4;
+}
+/* valid color */
+
+.input-field input[type=text].valid {
+    border-bottom: 1px solid #14E6A4;
+    box-shadow: 0 1px 0 0 #14E6A4;
+}
+/* invalid color */
+
+.input-field input[type=text].invalid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+
+.input-field .prefix.active {
+    color: #2F5FCE;
+}
+
+/*.formBox {
+   height: auto;
+   margin-top: 6%;
+   box-sizing: border-box;
+   background-color: rgba(221, 221, 221, 0.96);
+   border-radius: 25px;
+   box-shadow: 1px 2px 57px #9e9e9e;
+ }
+ 
+ .form {
+   margin-top: 6% !important;
+ }
+ 
+ #headLbl {
+   color: black;
+   text-transform: capitalize;
+   font-family: sans-serif;
+   font-weight: 600;
+   padding-top: 8%;
+ }*/
+
+   
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="SendMail.css" rel="stylesheet">
+<link rel="stylesheet" href="ngGallery.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+<body >
+    <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<!--    <script type="text/javascript" src="../js/controller/PropertyDetails/PropertyDetailslController.js"></script>	-->
+          
+
+<!--
+<div class="jumbotron text-center" id="jumboton" >
+  
+    <h1 ng-bind="AllData.Title"></h1>
+    
+</div>
+--><div class="row" id="coverimage">
+            <img style="width: 100%; height: 400px;" ng-src="{{AllData.ImagePath[0].src}}" class="img-responsive"></img>
+    </div>
+
+    <div class="snapshot">
+        <div class="container2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="snapContains">
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="fontIcon">
+                                            <i class="fa fa-map-marker fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                       <h5>Title</h5>
+                                       <span ng-bind="AllData.Title"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="fontIcon">
+                                            <i class="fa fa-map-marker fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>Address</h5>
+                                        <span ng-bind="AllData.Address"></span>,
+                                        <span ng-bind="AllData.City"></span>,
+                                        <span ng-bind="AllData.Location"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-2">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="fontIcon">
+                                            <i class="fa fa-map-marker fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>Type</h5>
+                                        <span ng-bind="AllData.Type"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="fontIcon">
+                                            <i class="fa fa-map-marker fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>Rate per sq.ft :</h5>
+                                        <span ng-bind="AllData.Rate"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+
+    
+    <div class="container1">
+      
+       <!--  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-large red">
+              <i class="large material-icons">mode_edit</i>
+            </a>
+        </div> -->
+
+
+
+    <hr>
+<!--
+    <div class="page-header text-center "><label class="headTitle" > <h2> Description </h2> </label>
+        <div class="page-body"> <label><h6>{{AllData.Description}}</h6></label><br><br></div>    
+    </div>
+-->
+      <div class="panel-body">
+            <div class="row">  
+    <fieldset>
+        <legend> Description </legend>
+        <div class="page-body"> <label><h6>{{AllData.Description}}</h6></label><br><br></div>
+    </fieldset>
+          </div></div>
+        
+        <hr>
+    <div class="panel-body">
+            <div class="row">      
+   <fieldset>
+        <legend> Other Details </legend>
+       <div class="panel-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-12" style="border: 1px solid;">
+                            <img style="width: 100%;" ng-src="{{AllData.ImagePath[0].src}}" class="thumbnail"></img>
+                        </div>
+                    </div>
+                </div>
+           
+          <!-- <div class="col-md-7">
+            <ul>
+                <li>
+                   <div><b><i class="material-icons collapsHeadIcon" >info_outline</i>About <span ng-bind="AllData.Title"></span></b>
+                        <ul>
+                            <li>
+                                <div class="row">
+                                    <div class="col s2"><label><h6>Builder : </h6></label></div>
+                                    <div class="col s10"><span ng-bind="AllData.Builder"></span></div>
+                                </div>
+                            </li>
+                        </ul> 
+                   </div>
+                </li>   
+            </ul>
+           </div>-->
+                <div class="col-md-7"><ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header collapsHead">
+                            <i class="material-icons collapsHeadIcon" >info_outline</i>About <span ng-bind="AllData.Title"></span></div>
+                        <div class="collapsible-body">
+                           <div class="row">
+                            <div class="col s2"><label><h6>Builder : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.Builder"></span></div>
+                            </div>
+                            <div class="row">
+                            <div class="col s2"><label><h6>City : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.City"></span></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header collapsHead" ><i class="material-icons collapsHeadIcon">place</i>About Property</div>
+                        <div class="collapsible-body">
+                             <div class="row">
+                            <div class="col s2"><label><h6>Property Type : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.Type"></span></div>
+                            </div>
+                            <div class="row">
+                            <div class="col s2"><label><h6>Rate : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.Rate"></span></div>
+                            </div>
+                            <div class="row">
+                            <div class="col s2"><label><h6>Builtup Area : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.BuiltupArea"></span></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header collapsHead"><i class="material-icons collapsHeadIcon">perm_phone_msg</i>Contact Information</div>
+                        <div class="collapsible-body">
+                             <div class="row">
+                            <div class="col s2"><label><h6>Email Id : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.Email"></span></div>
+                            </div>
+                            <div class="row">
+                            <div class="col s2"><label><h6>Phone Number : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.PhoneNo"></span></div>
+                            </div>
+                            <div class="row">
+                            <div class="col s2"><label><h6>Website : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.Website"></span></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+           </div>
+            </div>
+      
+        </div>
+    </fieldset>
+        </div></div>
+        
+    <!--<div class="row">
+    <div class="panel"></div>
+        <div class="panel-heading text-center "><label class="headTitle"><h2> Other Details </h2></label></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-12" style="border: 1px solid;">
+                            <img style="width: 100%;" ng-src="{{AllData.ImagePath[0].src}}" class="thumbnail"></img>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7"><ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header collapsHead">
+                            <i class="material-icons collapsHeadIcon" >info_outline</i>About <span ng-bind="AllData.Title"></span></div>
+                        <div class="collapsible-body">
+                           <div class="row">
+                            <div class="col s2"><label><h6>Builder : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.Builder"></span></div>
+                            </div>
+                            <div class="row">
+                            <div class="col s2"><label><h6>City : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.City"></span></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header collapsHead" ><i class="material-icons collapsHeadIcon">place</i>About Property</div>
+                        <div class="collapsible-body">
+                             <div class="row">
+                            <div class="col s2"><label><h6>Property Type : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.Type"></span></div>
+                            </div>
+                            <div class="row">
+                            <div class="col s2"><label><h6>Rate : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.Rate"></span></div>
+                            </div>
+                            <div class="row">
+                            <div class="col s2"><label><h6>Builtup Area : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.BuiltupArea"></span></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header collapsHead"><i class="material-icons collapsHeadIcon">perm_phone_msg</i>Contact Information</div>
+                        <div class="collapsible-body">
+                             <div class="row">
+                            <div class="col s2"><label><h6>Email Id : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.Email"></span></div>
+                            </div>
+                            <div class="row">
+                            <div class="col s2"><label><h6>Phone Number : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.PhoneNo"></span></div>
+                            </div>
+                            <div class="row">
+                            <div class="col s2"><label><h6>Website : </h6></label></div>
+                            <div class="col s10"><span ng-bind="AllData.Website"></span></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+            </div>
+        <!-- <div class="panel-footer">Here is footer</div> 
+        </div>
+    </div>-->
+<hr>
+
+ <div class="panel-body">
+            <div class="row">  
+    <fieldset>
+        <legend> Amenities </legend>
+        <div class="page-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+                        <li ng-if="AllData.Amenities.ClubHouse==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -400px"  ></span>
+                            <span style="display:inherit" >Club House</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Cycling==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1080px"  ></span>
+                            <span style="display:inherit">Cycling</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Garden==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -2200px"  ></span>
+                            <span style="display:inherit">Garden</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.PowerBackUp==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1680px" ></span>
+                            <span style="display:inherit">Power Backup</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.SwimmingPool==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -2120px"  ></span>
+                            <span style="display:inherit">Swimming Pool</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Lift==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1320px"  ></span>
+                            <span style="display:inherit">Lift</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Security==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1960px" ></span>
+                            <span style="display:inherit">Security</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Park==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1560px"  ></span>
+                            <span style="display:inherit">Park</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Parking==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1600px"  ></span>
+                            <span style="display:inherit">Parking</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Service==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -2120px"  ></span>
+                            <span style="display:inherit">Service/Goods Lift</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.VisitorParking==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -2200px"  ></span>
+                            <span style="display:inherit">Visitor Parking</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.IntercomFacility==true"  class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -2320px" ></span>
+                            <span style="display:inherit">Intercom Facility</span>  
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+          </div></div>
+
+<!--<div class="row">
+    <div class="panel">
+        <div class="panel-heading text-center "><label class="headTitle"><h2>Amenities</h2></label></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+                        <li ng-if="AllData.Amenities.ClubHouse==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -400px"  ></span>
+                            <span style="display:inherit" >Club House</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Cycling==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1080px"  ></span>
+                            <span style="display:inherit">Cycling</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Garden==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -2200px"  ></span>
+                            <span style="display:inherit">Garden</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.PowerBackUp==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1680px" ></span>
+                            <span style="display:inherit">Power Backup</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.SwimmingPool==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -2120px"  ></span>
+                            <span style="display:inherit">Swimming Pool</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Lift==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1320px"  ></span>
+                            <span style="display:inherit">Lift</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Security==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1960px" ></span>
+                            <span style="display:inherit">Security</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Park==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1560px"  ></span>
+                            <span style="display:inherit">Park</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Parking==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -1600px"  ></span>
+                            <span style="display:inherit">Parking</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.Service==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -2120px"  ></span>
+                            <span style="display:inherit">Service/Goods Lift</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.VisitorParking==true" class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -2200px"  ></span>
+                            <span style="display:inherit">Visitor Parking</span>
+                        </li>
+                        <li ng-if="AllData.Amenities.IntercomFacility==true"  class="amenitiesLi">
+                            <span class="amenities" style="background-position:0 -2320px" ></span>
+                            <span style="display:inherit">Intercom Facility</span>  
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<hr>
+
+ <div class="panel-body">
+            <div class="row">  
+    <fieldset>
+        <legend> Image Gallery </legend>
+        <div class="page-body">
+            <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <ng-gallery images="AllData.ImagePath" thumbs-num="11">
+                    </ng-gallery>
+                </div>
+            </div>
+        </div>
+        </div>
+    </fieldset>
+          </div></div>
+
+<!--<div class="row">
+    <div class="panel">
+        <div class="panel-heading text-center "><label class="headTitle"><h2>Image Gallery</h2></label></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <ng-gallery images="AllData.ImagePath" thumbs-num="11">
+                    </ng-gallery>
+                    <!-- <ul>
+                        <li ng-repeat="image in gallery" style="display: inline-block;">
+                            <a href="{{image.src}}" data-lightbox="gallary"><img ng-src="{{image.src}}" style="width: 27%;" /></a>
+                        </li>
+                    </ul> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<hr>
+
+<div class="panel-body">
+            <div class="row">  
+    <fieldset>
+        <legend> Location Map </legend>
+        <div class="page-body"> <div class="col-sm-12">
+<div id="map"> </div >
+</div></div>
+    </fieldset>
+          </div></div>
+
+<!--<div class="panel-heading text-center headTitle"><label class="headTitle"><h2>Location Map</h2></label></div>
+
+<div class="col-sm-12">
+<div id="map"> </div >
+</div>-->
+
+<div>
+    <a class="fixedBtn" ng-click="btnClick()" >Yes...I'm Intersted</a>
+</div>
+<!--
+    <div class="fixed-action-btn" style="top: 45px; right: 24px;">
+            <afixedBtn class="waves-effect waves-light red btn-large" ng-click="btnClick()" >Yes...I'm Intersted</a>
+            </div>
+-->
+
+           
+            <div ng-if="OverlayDiv" class="outerOverlay" >
+                <div ng-if="messageSent" class="MessageSent"><h4>Message Sent...!</h4></div>
+                <!--<span class="closeAll">X</span>-->
+                <div ng-if="InnerDiv" class="InnerDiv" id="InnerDiv">
+
+                    <div style="height:100%" ng-if="formDiv">
+
+                        <!--<div class="formDiv">-->
+                        <!--<div class="container ">-->
+                        <div class="row formRow">
+                            <div class="col s10 FormColLeft">
+                                <form class=" form col s10 offset-s1">
+                                    <label id="headLbl">
+                                        <h4>Mail</h4>
+                                    </label>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="small material-icons prefix">subtitles</i>
+                                            <input id="name" type="text" class="validate">
+                                            <label for="name">Name (required)</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="small material-icons prefix">email</i>
+                                            <input id="email" type="email" class="validate">
+                                            <label for="email" data-error="Invalid" data-success="right">Email (required)</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">phone</i>
+                                            <input id="telephone" type="tel" class="validate">
+                                            <label for="telephone">Telephone No(Optional)</label>
+                                        </div>
+
+                                        
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="col s2 formColRight" id="formColRight">
+                                <div>
+                                <div ng-click="doAnimation()" class="planeDiv">
+                                    <img src="/img/plane.png" /><div>SEND</div>
+                                </div>
+                                    </div>
+<!--
+                                <div id="cancelAll" ng-click="cancelAll();">
+                                    <div class="cancelDiv">X</div><div class="cancelText">CANCEL</div>
+                                </div>
+-->
+                        </div>
+
+                    </div>
+                    <!--</div>-->
+                    <!--<input type="button" value="add" ng-click="doAnimation()" />-->
+                    <!--</div>-->
+
+                </div>
+
+            </div>
+
+            <!--<div class="rrr"></div>-->
+        </div>
+	
+	</div>
+		
+    </body>

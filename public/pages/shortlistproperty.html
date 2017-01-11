@@ -1,0 +1,57 @@
+    <style type="text/css">
+    .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 80%;
+            margin: auto;
+           
+        }
+    </style>
+<div style="margin:10px;">
+
+<div class="table-responsive" style="width:80%;float:right;" >
+
+<table class="table table-bordered" >
+<tr ng-repeat="property in properties" ng-init="starRating1=getShortlists(property._id);" ng-if="isShow[$index] == index">
+<td><h2>{{property.Title}}</h2>
+	<div style="float:left;margin:0 10px 0 10px;" ng-click="oepnModalPopUp(property.ImagePath)" ><img ng-src="{{property.ImagePath[0].src}}" class="thumbnail" height="160px" width="194px" data-toggle="modal" data-target="#myModal" />{{property.ImagePath.length}} images		
+	</div>
+	<div>
+	<label>{{property.Highlights}}</label>
+	<label>{{property.BuiltupArea}}sq.ft. @Rs{{property.Rate}}/sq.ft</label>
+	<label>{{property.Society}}</label>
+	<label>{{property.Description}}</label>	
+	<label>Location:{{property.Location}}</label>			
+	<div><label>Contact Information:</label> {{property.Builder}}<br />{{property.PhoneNo}}, {{property.Email}}</div>
+	<div>{{property.TotalCost}}</div><div>{{property.Type}}</div>
+	<div><label>Posted On:</label> {{property.Created | date:longDate}}</div>
+	 <div title="{{AuthenticationService.email == '' && 'Please login to avail this feature' || 'Shortlist Property'}}" star-rating rating="starRating1" read-only="{{AuthenticationService.email == '' && true || false}}" max-rating="1" click="click1(param,property._id,$index)" mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)"></div> <!-- <span class="label label-primary">Bookmarked: {{starRating1}}</span> -->
+            </div>
+	<button class="btn btn-success" ng-click="Update(property._id)" ng-show='AuthenticationService.isLogged'>Edit</button>
+	<button class="btn btn-danger" ng-confirm-click="Are you sure you want to delete this property?" ng-click="Delete(property._id)" ng-show='AuthenticationService.isLogged'>Delete</button>
+</div>
+
+
+	</td>
+</tr> 
+</table>
+<div ng-if="count==0">
+    <p class="lead">No Shortlisted property to show. </p>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" ng-click="removeslider()">&times;</button>
+                            <h4 class="modal-title">Photo Gallery</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><div id="MyDiv"></div></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="removeslider()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+</div>

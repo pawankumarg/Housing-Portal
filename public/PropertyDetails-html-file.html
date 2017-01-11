@@ -1,0 +1,332 @@
+ <head>
+      <meta name="fragment" content="!">
+      <!-- We define the SEO variables we want to dynamically update -->
+      <title>easeHousing | {{ ::seo.pageTitle }}</title>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="{{ ::seo.pageDescripton }}">
+	  <link rel="shortcut icon" href="/favicon.ico"  type="image/x-icon" rel="shortcut icon">
+      <link rel="stylesheet" href="http://easehousing.com/css/housing.css" />
+	   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+ <style type="text/css">
+ .nav-pills.nav > li > a {
+    color: #fff;
+}
+.project-details-band{
+ background:#00d6dd;
+ padding-top:15px;
+   border-bottom:1px solid #c9c9c9;
+  border-top:1px solid #c9c9c9;
+
+}
+.project-details-band .fontIcon{
+ color:#fff;
+}
+.project-details-band h5{
+font-weight:bold; 
+}
+.project-details h2 {
+    font-family: "Oswald",sans-serif;
+    padding-bottom: 25px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 15px;
+	color: #2D2D2D;
+}
+.project-details p{
+ color:#454545;
+}
+.bottom-border{
+  border-bottom:1px solid #c9c9c9;
+}
+.property-pics, .project-image-gallery{
+background: #f7f7f7;
+}
+.project-discription, .property-pics, .project-amenities, .project-image-gallery{
+  padding-bottom:15px;
+  border-bottom:1px solid #c9c9c9;
+  }
+.project-amenities ul li, .project-image-gallery ul li{
+list-style:none;
+}
+.project-amenities ul li.amenitiesLi {
+    width: 15%;
+}
+.project-image-gallery ul li img{
+  border:1px solid #c9c9c9;
+}
+</style>
+<body >
+
+   <header>
+            <div class="header-inner">
+               <div class="header-top clearfix">
+                  <div class="header-top-inner container">
+                     <div class="navbar-header">
+                        <a href="/" class="header-logo">
+                        <img src="http://easehousing.com/img/logoeh.png" alt="easeHousing" />
+                        </a><!-- /.header-logo -->
+                     </div>
+                    <div class="pull-right top-nav" >
+                        <ul class="nav nav-pills" >
+                           <li><a href="/shortlistproperty" style="padding-right:10px;">
+                           <i class="fa fa-star" title="title="Login to see your Shortlisted properties" "></i></a></li>
+                           <li><a href='#' id='modal-launcher' data-toggle="modal" data-target="#login-modal"><i class="fa fa-user"></i> Login</font></a></li>
+                           <li ><a href='#'>Logout</font></a></li>  
+                           <li ><a href='/signup'>Sign Up</a></li>                         
+                           <li >
+                              <md-button ng-click="toggleRight()" class="md-icon-button md-primary" aria-label="Settings">
+                                <md-icon md-svg-icon="img/icons/menu.svg" style="color:white"></md-icon>
+                              </md-button>
+                           </li>
+                        </ul>
+
+                     </div>
+                     
+                  </div>
+               </div>
+            </div>
+         </header>
+		 
+		
+			<section class="project-details">
+				   <div id="coverimage" class="ng-scope">
+            <img class="img-responsive" style="width: 100%; height: 400px;" src="http://easehousing.com/img/uploads/0AshiyanaVillage1.jpg" src="/img/uploads/0AshiyanaVillage1.jpg">
+    </div>  
+		
+			<div class="project-details-band">
+			<div class="container"> 
+			<div class="row">
+			   <div class="col-lg-12 form-group">
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="fontIcon">
+                                            <i class="fa fa-map-marker fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                       <h5>Title</h5>
+                                       <span ng-bind="AllData.Title" class="ng-binding">Ashiyana Village  - 910 sq. ft</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="fontIcon">
+                                            <i class="fa fa-map-marker fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>Address</h5>
+                                        <span ng-bind="AllData.Address" class="ng-binding">Near Vasant Deshmukh Memorial School, Katrang</span>,
+                                        <span ng-bind="AllData.City" class="ng-binding">Khopoli</span>,
+                                        <span ng-bind="AllData.Location" class="ng-binding">Khalapur</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-2">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="fontIcon">
+                                            <i class="fa fa-map-marker fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>Type</h5>
+                                        <span ng-bind="AllData.Type" class="ng-binding">2BHK</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="fontIcon">
+                                            <i class="fa fa-map-marker fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>Rate per sq.ft :</h5>
+                                        <span ng-bind="AllData.Rate" class="ng-binding">3400</span>
+                                    </div>
+                                </div>
+                            </div>
+			   </div>
+			</div>
+		</div>
+		 
+		    </div>
+			
+			<div class="project-discription">
+			 <div class="container">
+			   <div class="row">
+			     <div class="col-lg-12">
+			                 <h2 class="text-center"> Description </h2>
+							 <p>Situated besides the Mountains with greenery all around and equipped with all the modern amenities of Children's Play Area, Swimming Pool, Club House and Gym, 'Ashiyana Village' gives you immense luxuries with a touch of beautiful nature. This project successfully sold out it's two phases and is about to complete it's third phase. A five minute walk from Station and Bus Stop, this project offers you with your dream homes so that you feel the joy of happy living..!!!
+							 </p>
+			          </div>
+					  </div>
+					 </div>
+			</div>
+			
+			<div class="property-pics">
+			  <div class="container">
+			     <div class="row">
+					    <div class="col-lg-12">
+			                 <h2 class="text-center"> Other Details </h2>
+								<div class="col-md-5">
+									<div class="row">
+										<div class="col-md-12">
+										    <img class="img-responsive" src="http://easehousing.com/img/uploads/0AshiyanaVillage1.jpg" >
+										</div>
+									</div>
+								</div>
+		 						<div class="col-md-7">
+								<p>Project Details</p>
+                                    </div>
+			          </div>
+			     </div>
+			  </div>
+			  </div>
+			  
+			  <div class="project-amenities">
+			 <div class="container">
+			   <div class="row">
+			     <div class="col-lg-12">
+			                 <h2 class="text-center"> Amenities </h2>
+							 <ul>
+                        <!-- ngIf: AllData.Amenities.ClubHouse==true -->
+                        <!-- ngIf: AllData.Amenities.Cycling==true -->
+                        <!-- ngIf: AllData.Amenities.Garden==true -->
+                        <!-- ngIf: AllData.Amenities.PowerBackUp==true -->
+                        <!-- ngIf: AllData.Amenities.SwimmingPool==true --><li class="amenitiesLi ng-scope" ng-if="AllData.Amenities.SwimmingPool==true">
+                            <span style="background-position:0 -2120px" class="amenities"></span>
+                            <span style="display:inherit">Swimming Pool</span>
+                        </li><!-- end ngIf: AllData.Amenities.SwimmingPool==true -->
+                        <!-- ngIf: AllData.Amenities.Lift==true --><li class="amenitiesLi ng-scope" ng-if="AllData.Amenities.Lift==true">
+                            <span style="background-position:0 -1320px" class="amenities"></span>
+                            <span style="display:inherit">Lift</span>
+                        </li><!-- end ngIf: AllData.Amenities.Lift==true -->
+                        <!-- ngIf: AllData.Amenities.Security==true --><li class="amenitiesLi ng-scope" ng-if="AllData.Amenities.Security==true">
+                            <span style="background-position:0 -1960px" class="amenities"></span>
+                            <span style="display:inherit">Security</span>
+                        </li><!-- end ngIf: AllData.Amenities.Security==true -->
+                        <!-- ngIf: AllData.Amenities.Park==true --><li class="amenitiesLi ng-scope" ng-if="AllData.Amenities.Park==true">
+                            <span style="background-position:0 -1560px" class="amenities"></span>
+                            <span style="display:inherit">Park</span>
+                        </li><!-- end ngIf: AllData.Amenities.Park==true -->
+                        <!-- ngIf: AllData.Amenities.Parking==true --><li class="amenitiesLi ng-scope" ng-if="AllData.Amenities.Parking==true">
+                            <span style="background-position:0 -1600px" class="amenities"></span>
+                            <span style="display:inherit">Parking</span>
+                        </li><!-- end ngIf: AllData.Amenities.Parking==true -->
+                        <!-- ngIf: AllData.Amenities.Service==true -->
+                        <!-- ngIf: AllData.Amenities.VisitorParking==true -->
+                        <!-- ngIf: AllData.Amenities.IntercomFacility==true --><li class="amenitiesLi ng-scope" ng-if="AllData.Amenities.IntercomFacility==true">
+                            <span style="background-position:0 -2320px" class="amenities"></span>
+                            <span style="display:inherit">Intercom Facility</span>  
+                        </li><!-- end ngIf: AllData.Amenities.IntercomFacility==true -->
+                    </ul>
+			          </div>
+					  </div>
+					 </div>
+			</div>
+			
+			
+			<div class="project-image-gallery">
+			 <div class="container">
+			   <div class="row">
+			     <div class="col-lg-12">
+			                 <h2 class="text-center"> Image Gallery </h2>
+							<div class="row">
+                <div class="col-md-12">
+                 <ul class="row">
+            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <img class="img-responsive" src="http://easehousing.com/img/uploads/0AshiyanaVillage1.jpg">
+            </li>
+            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <img class="img-responsive" src="http://easehousing.com/img/uploads/0AshiyanaVillage1.jpg">
+            </li>
+            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <img class="img-responsive" src="http://easehousing.com/img/uploads/0AshiyanaVillage1.jpg">
+            </li>
+            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <img class="img-responsive" src="http://easehousing.com/img/uploads/0AshiyanaVillage1.jpg">
+            </li>
+            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <img class="img-responsive" src="http://easehousing.com/img/uploads/0AshiyanaVillage1.jpg">
+            </li>
+            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <img class="img-responsive" src="http://easehousing.com/img/uploads/0AshiyanaVillage1.jpg">
+            </li>
+                </div>
+            </div>
+			          </div>
+					  </div>
+					 </div>
+			</div>
+			
+			<div class="project-location">
+			 <div class="container">
+			   <div class="row">
+			     <div class="col-lg-12">
+			                 <h2 class="text-center"> Location Map </h2>
+							 <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30216.503447068822!2d73.31884844649832!3d18.79534861130554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be80711b08050b5%3A0x68fc1d6871dbd86d!2sKhopoli%2C+Maharashtra!5e0!3m2!1sen!2sin!4v1464520857410" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></p>
+			          </div>
+					  </div>
+					 </div>
+			</div>
+			  
+			  
+			</section>
+		 
+		   <footer>
+	     <div class="footer-top">
+			 <div class="container">
+				<div class="row">
+					  <div class="footer-nav col-md-8">
+						 <ul class="nav navbar-nav">
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="/contactus">Contact Us</a></li>
+							<li><a href="/site-map">Site Map</a></li>
+						 </ul>
+					  </div>
+					  <div class="social-icons col-md-4" >
+					  <ul class="social ">
+											   <li title="" data-placement="top" data-toggle="tooltip" class="facebook icon-circle" data-original-title="Facebook"><a href="https://www.facebook.com/easehousing/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+											<li style="display:none" title="" data-placement="top" data-toggle="tooltip" class="twitter icon-circle" data-original-title="Twitter"><a href="" target="_blank"><i class="fa fa-twitter"></i></a></li>				
+											<li style="display:none" title="" data-placement="top" data-toggle="tooltip" class="linkedin icon-circle" data-original-title="Linkedin"><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+						<li title="" data-placement="top" data-toggle="tooltip" class="home icon-circle" data-original-title="home"><a href="/"><i class="fa fa-home"></i></a></li>
+					</ul>
+					  </div>
+				</div>
+			 </div>
+			</div>
+			 <div class="site-copyright">
+			 <div class="container">
+				<div class="row">
+						<div class="col-md-12 copyrights text-center">
+						<p>
+						   Copyright &copy; easeHousing <script type="text/javascript">document.write(new Date().getFullYear())</script> 
+						</p>
+					</div>
+				</div>
+				<span id="top-link-block">
+					<a href="#top" class=" icon-circle"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+						<i class="fa fa-chevron-up" title=" Back to Top"></i>
+					</a>
+	            </span>
+			</div>
+			</div>
+      </footer>
+	  
+	  
+	    <!-- jQuery -->
+        <script src="http://easehousing.com/js/jquery-1.10.2.min.js"></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="http://easehousing.com/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<style>
+md-input-container:not(.md-input-invalid) > md-icon.email {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.name {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.phone {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.address {
+    color: #00c0ef; }
+ md-input-container.md-input-invalid > md-icon.email,
+ md-input-container.md-input-invalid > md-icon.name,
+  md-input-container.md-input-invalid > md-icon.phone {
+    color: red; }
+    #map {
+    height:420px;
+    width:600px;
+    }
+</style>
+<div class="container">
+
+<h1 class="page-header">Sell / Rent a Property</h1>
+
+<form class="form-horizontal"  name="addProperty">
+  <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">    
+      <label>Property Title (required)</label>     
+      <input ng-model="formData.Title" type="text" ng-required="true">
+    </md-input-container>
+    <md-input-container class="md-block">
+          <label>Description</label>          
+          <textarea ng-model="formData.Description" rows="5" md-select-on-focus ></textarea>
+    </md-input-container>
+     <div layout-gt-sm="row">
+    <md-input-container class="md-icon-float md-block" flex-gt-sm>    
+      <label>Address</label>     
+      <input ng-model="formData.Address" type="text" ng-blur="getLocation()" >
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block" flex-gt-sm>    
+      <label>City</label>     
+      <input ng-model="formData.City" type="text" ng-blur="getLocation()"  >
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+            <label>Taluka :</label>
+            <md-select ng-model="formData.Location" ng-change="getLocation()" >
+               <md-option value="Alibag">Alibag</md-option>
+                <md-option value="Karjat">Karjat</md-option>
+                <md-option value="Khalapur">Khalapur</md-option>
+                <md-option value="Mahad">Mahad</md-option>
+                <md-option value="Mangaon">Mangaon</md-option>
+                <md-option value="Mhasla">Mhasla</md-option>
+                <md-option value="Murud">Murud</md-option>
+                <md-option value="Panvel">Panvel</md-option>
+                <md-option value="Pen">Pen</md-option>
+                <md-option value="Pali">Pali</md-option>
+                <md-option value="Poladpur">Poladpur</md-option>
+                <md-option value="Roha">Roha</md-option>
+                <md-option value="Shrivardhan">Shrivardhan</md-option>
+                <md-option value="Tala">Tala</md-option>
+                <md-option value="Uran">Uran</md-option>
+            </md-select>
+    </md-input-container>
+    </div>
+     <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm>
+            <label>Want to (Required):</label>
+            <md-select ng-model="formData.Purpose" ng-required="true">
+                 <md-option value="Buy">Sell</md-option>
+                  <md-option value="Rent">Rent</md-option>
+            </md-select>
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block" flex-gt-sm ng-if="formData.Purpose=='Buy'">    
+      <label>Built-up Area (required)</label>     
+      <input ng-model="formData.BuiltupArea" type="number" ng-required="true" >
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block" flex-gt-sm ng-if="formData.Purpose=='Buy' || formData.Purpose=='Rent'">    
+      <label ng-if="formData.Purpose!='Rent'">Per Sq. Ft. Rate (required)</label>     
+      <label ng-if="formData.Purpose=='Rent'">Rent per month (required)</label>    
+      <input ng-model="formData.Rate" type="number" ng-required="true">
+    </md-input-container>
+     
+  </div>
+ 
+    <div layout-gt-sm="row">
+    <md-input-container class="md-icon-float md-block" flex-gt-sm>    
+      <label>Name</label>     
+      <input ng-model="formData.Builder" type="text" >
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block" flex-gt-sm>
+        <label>Phone (required)</label>        
+        <input ng-model="formData.PhoneNo" md-maxlength="10" type="text" ng-required="true">
+      </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+        <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+        <input ng-model="formData.Email" type="email" placeholder="Email (required)" ng-required="true">
+      </md-input-container>
+       <md-input-container class="md-icon-float md-block" flex-gt-sm>    
+      <label>Website URL</label>     
+      <input ng-model="formData.Website" type="text" >
+    </md-input-container>
+  </div>
+  <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm>
+            <label>Type :</label>
+            <md-select ng-model="formData.Type">
+              <md-option value="1RK">1RK</md-option>
+              <md-option value="1BHK">1BHK</md-option>
+              <md-option value="2BHK">2BHK</md-option>
+              <md-option value="3BHK">3BHK</md-option>
+              <md-option value="Bungalow">Bungalow</md-option>
+              <md-option value="Plot">Plot</md-option>
+              <md-option value="RowHouse">Row House</md-option>
+              <md-option value="Shop">Shop</md-option>
+            </md-select>
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+            <label>I am a :</label>
+            <md-select ng-model="formData.Iam">
+               <md-option>Owner</md-option>
+                <md-option>Dealer</md-option>
+                <md-option>Builder</md-option>
+            </md-select>
+    </md-input-container>
+    
+  </div>
+   <div layout-gt-sm="row">   
+      <md-input-container class="md-block" >
+            <label>Amenities : </label>
+      </md-input-container>
+      <md-input-container class="md-block" >
+            <md-checkbox ng-model="formData.Amenities.ClubHouse" aria-label="Club House">Club House</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.Cycling" aria-label="Cycling & Jogging Track">Cycling & Jogging Track</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.Garden" aria-label="Private Terrace/Garden">Private Terrace/Garden</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.PowerBackUp" aria-label="Power Back Up">Power Back Up</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.SwimmingPool" aria-label="Swimming Pool">Swimming Pool</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.Lift" aria-label="Lift">Lift</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.Security" aria-label="Security">Security</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.Park" aria-label="Park">Park</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.Parking" aria-label="Reserved Parking">Reserved Parking</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.Service" aria-label="Service/Goods Lift">Service/Goods Lift</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.VisitorParking" aria-label="Visitor Parking">Visitor Parking</md-checkbox>
+            <md-checkbox ng-model="formData.Amenities.IntercomFacility" aria-label="Intercom Facility">Intercom Facility</md-checkbox>
+       </md-input-container>
+  </div>
+  </md-content>
+  
+  <div class="form-group">
+        <label class="col-sm-2 control-label">File input</label>
+
+        <div class="col-sm-2" >
+            <div class="button" ngf-select ng-model="files" ngf-multiple="true" ngf-resize="{width: 50, height: 30, quality: .5, ratio: '2:1', centerCrop: false}">
+                <button class="form-control">Choose File</button>
+            </div>
+
+        </div>
+      </div>
+
+
+  <div class="form-group">
+       <div class="row">
+               <div class="col col-md-8 push-down-sm">
+                   <div class="thumbnails">
+                     <div id="GallaryDiv"></div>
+                   </div>
+                   
+           </div>
+      </div>
+      
+<!--      <div id="map" > </div >-->
+      <div class="col-sm-offset-2 col-sm-4">
+                <input type="button" class="btn btn-primary" ng-disabled="!addProperty.$valid"  ng-click="FinalSubmit()" value="Submit"></input>
+      </div>
+      </div>
+  <!-- <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">      
+      <input type="button" class="btn btn-default" ng-disabled="!addProperty.$valid" ng-click="submitProperty()" value="Submit"></input>
+    </div>
+  </div> -->
+</form>
+
+</div>

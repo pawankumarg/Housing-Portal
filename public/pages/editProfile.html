@@ -1,0 +1,37 @@
+<form class="form-horizontal"  name="signup">
+<div class='row'>
+	<div class="col-sm-6 col-sm-offset-3">
+			<div class='row'>
+				<div >
+				<strong>Email Address : </strong>
+				<input type='text' ng-model='newUser.email' class='form-control' ng-required="true" name="email" disabled>
+			</div>
+				<div role="alert">
+			      <span class="error" ng-show="signup.email.$error.required">
+			       <font style="color:red">*</font></span>
+			    </div>
+				<strong>Password : </strong>
+				<input type='password' ng-model='newUser.password' class='form-control' ng-required="true" name="password">
+				<div role="alert">
+			      <span class="error" ng-show="signup.password.$error.required">
+			       <font style="color:red">*</font></span>
+			    </div>
+			    <strong>Confirm Password : </strong>
+				<input type='password' ng-model='newUser.confirmPassword' class='form-control' ng-required="true" name="confirmPassword" compare-to="newUser.password">
+				<div role="alert">
+			      <span class="error" ng-show="signup.password.$error.required">
+			       <font style="color:red">*</font></span>
+			       <span class="error" ng-show="signup.confirmPassword.$error.compareTo">
+			       <font style="color:red">Confirm Password and Password should match!</font></span>
+			       
+			    </div>
+			     <strong>Address : </strong>
+					<input type='text' ng-model='newUser.address' class='form-control' name="address" >
+
+				 <strong>City : </strong>
+					<input type='text' ng-model='newUser.city' class='form-control' name="city" >
+				</div>
+			<button ng-disabled="!signup.$valid"  ng-click='updateUser()'>Submit</button>
+	</div>
+</div>
+</form>

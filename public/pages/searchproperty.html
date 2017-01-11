@@ -1,0 +1,180 @@
+    <style type="text/css">
+    .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 80%;
+            margin: auto;
+           
+        }
+    </style>
+ <div class="container insidepage-wrap">
+	    <div class="row">
+            <div class="col-md-7">
+                <h1 class="page-header">Search Property
+                   
+                </h1>
+               	
+            </div>
+            <div class="col-md-5">
+            	<button class="btn" style="position:fixed;bottom:22px;right:51px;z-index:999;border-radius:25px;background-color:#00c0ef;color:white;font-size:20px" ng-if='AuthenticationService.isLogged' ng-click="go()" >Post Property (Free)</button>
+            	<button class="btn" style="position:fixed;bottom:22px;right:51px;z-index:999;border-radius:25px;background-color:#00c0ef;color:white;font-size:20px" ng-if='!AuthenticationService.isLogged'  id='modal-launcher' data-toggle="modal" data-target="#login-modal">Post Property (Free)</button>
+            </div>
+        </div>
+		
+		  <div class="row">
+		     	<div class="col-md-3">
+			        <div class="well">
+						<h4>Page Ad section</h4>
+						  <!--<img class="img-responsive img-hover" alt="" src="http://easehousing.com/img/uploads/0002.jpg">-->
+						<p>Please <a href="/contactus" title="Contact Us">contact us</a> to put your property Ads here</p>
+					</div>
+				</div>
+			<div class="col-md-9">
+				<div id="filter-panel" class=" filter-panel">
+				   <div class="panel panel-default">
+					  <div class="panel-body" >
+					    	<div class="search-panel col-sm-14">
+					    	 <md-content class="md-no-momentum">
+					    	 	<div layout-gt-sm="row">
+					    	 		<md-input-container class="md-block" flex-gt-sm>
+							            <label>Want To:</label>
+							            <md-select ng-model="WantTo" ng-change="RefineProperty()">
+							            	<md-option value="Buy" selected>Buy</md-option>
+											<md-option value="Rent">Rent</md-option>
+							            </md-select>
+							    	</md-input-container>
+							    	<md-input-container class="md-icon-float md-block" >
+								      	<!-- Use floating label instead of placeholder -->
+								      	<label>Search</label>							      	
+								      	<input ng-model="SearchProp" type="text" ng-blur="RefineProperty()">
+							    	</md-input-container>							    	
+                       				<md-input-container class="md-block" flex-gt-sm>
+							            <label>Type:</label>
+							            <md-select ng-model="Type" ng-change="RefineProperty()">
+							            	<md-option value="1RK">1RK</md-option>
+											  <md-option value="1BHK">1BHK</md-option>
+											  <md-option value="2BHK">2BHK</md-option>
+											  <md-option value="3BHK">3BHK</md-option>
+											  <md-option value="Bungalow">Bungalow</md-option>
+              								  <md-option value="Plot">Plot</md-option>
+											  <md-option value="RowHouse">Row House</md-option>							                         
+											  <md-option value="Shop">Shop</md-option>	
+							            </md-select>
+							    	</md-input-container>
+							    	
+							    	<md-input-container class="md-icon-float md-block" flex-gt-sm>
+								      	<label ><font ng-if="WantTo=='Buy'">Min (in lakhs)</font><font ng-if="WantTo=='Rent'">Min (in thousands)</font></label>
+								      	<input ng-model="Refine.Min" type="text" ng-blur="RefineProperty()">
+							    	</md-input-container>
+							    	<md-input-container class="md-icon-float md-block" flex-gt-sm>
+							    	<label ><font ng-if="WantTo=='Buy'">Max (in lakhs)</font><font ng-if="WantTo=='Rent'">Max (in thousands)</font></label>
+								      	<input ng-model="Refine.Max" type="text" ng-blur="RefineProperty()">
+							    	</md-input-container>
+							    	<a href="#" ng-click="all()" title="Clear Filter"><img src="/img/icons/clear.png" alt="Clear Filter" /></a>
+							    	<!-- <md-input-container class="md-icon-float md-block" flex-gt-sm>
+							    		<button class="btn btn-primary" type="button" ng-click="RefineProperty()">Search</button>
+							    		<button class="btn btn-primary" type="button" ng-click="all()" >Clear</button>
+						    		</md-input-container> -->
+							    	
+                        	 </div>
+						    </md-content>		 
+					  </div>
+				   </div>
+				</div>
+				</div>
+<div class="" infinite-scroll="myPagingFunction()" infinite-scroll-disabled='busy || noMoreData'>
+	<div class="project-list clearfix" ng-repeat="property in properties" ng-init="starRating1=getShortlists(property._id)" >
+	   
+			<div class="col-md-9">
+				<h3><label id="propTitle" ><a href="#" ng-click="OpenInDetais(property._id);" class="propertyTitle" >{{::property.Title}}</a></label></h3>
+				
+				<div class="row">
+					<div class="col-md-6">				
+					   <label>Area :</label> {{::property.BuiltupArea}}sq.ft. @Rs{{::property.Rate}}/sq.ft
+					</div>
+					<div class="col-md-6">
+					   <label>Cost :</label> <span ng-if="property.Purpose=='Buy'">{{::property.TotalCost/100000 | currency:"&#8377;":1}} Lac</span><span ng-if="property.Purpose=='Rent'">{{::property.TotalCost | currency:"&#8377;":0}} </span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+					   <label>Location :</label> {{::property.Address}}, {{::property.City}}
+					</div>
+					
+					<div class="col-md-6">
+					   <label>Contact Info :</label> {{::property.Builder}}<br />{{::property.PhoneNo}}, {{::property.Email}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+					   <label>Type :</label> {{::property.Type}}
+					</div>					
+					<div class="col-md-6">
+					   <label ng-if="property.Website!=''">Website :</label> {{::property.Website}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+					   <label>Posted By :</label> {{::property.Iam}}
+					</div>
+					<div class="col-md-6">
+					   <label>Posted On :</label> {{::property.Created | date:longDate}}
+					</div>
+				</div>
+				
+			</div>
+		
+			<div class="col-md-3"  >
+				<div class="row">
+					<div class="col-md-6" style=”position:relative”>	
+						<a href="#myCarousel" ng-click="oepnModalPopUp(property.ImagePath)">
+						<img ng-src="{{property.ImagePath[0].src}}" class="thumbnail" height="160px" width="194px" data-toggle="modal" data-target="#myModal" />
+						<div style="position: absolute;bottom: 20px;text-align:center;width:142px;padding:5px;color:#fff;margin:5px;">{{::property.ImagePath.length}} photos</div></a>
+						</div>
+					
+				</div>						
+				<div class="row">
+					<div class="col-md-3">	
+						<div title="{{AuthenticationService.email == '' && 'Please login to avail this feature' || 'Shortlist Property'}}" star-rating rating="starRating1" read-only="{{AuthenticationService.email == '' && true || false}}" max-rating="1" click="click1(param,property._id)" mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)"></div> 
+					</div>	
+					<div class="col-md-6">	
+						Views: {{::property.Views}}
+					</div>
+					<!-- <div class="col-md-6">	
+						<a href="#" ng-click="OpenInDetais(property._id);" class="btn btn-primary">View Project</a>
+					</div> -->
+				</div>		
+						
+				<div class="row"  ng-if='(AuthenticationService.isLogged && AuthenticationService.isAdmin) || (AuthenticationService.isLogged && AuthenticationService.email==property.Email)'>
+					<div class="col-md-6">							
+						
+					    <md-button md-no-ink class="md-primary" ng-click="Update(property._id)">Edit</md-button>
+					    </div>
+						<div class="col-md-6">							
+					    <md-button class="md-warn" ng-click="showConfirm($event,property._id)">Delete</md-button>
+					</div>
+				
+			</div>
+	</div>	
+		
+</div>
+             
+	    </div>
+   </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" ng-click="removeslider()">&times;</button>
+				<h4 class="modal-title">Photo Gallery</h4>
+			</div>
+			<div class="modal-body">
+				<p><div id="MyDiv"></div></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="removeslider()">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

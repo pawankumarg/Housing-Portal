@@ -1,0 +1,71 @@
+
+
+<style>
+   .Strong   { color: green; border-color: #0F0;}
+   .Medium   { color: #C60; border-color: #FC0;}
+   .Weak     { color: red; border-color: #F00;}
+   .strength { padding: 1px 10px; border: 2px solid; color: #FFF;}
+</style>
+ <div class="container insidepage-wrap">
+	    <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Sign Up
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="active">Sign Up</li>
+                </ol>
+            </div>
+        </div>
+		<div class="row">
+            <div class="col-md-3">
+			</div>
+			<div class="col-md-5">
+<form class="form-horizontal"  name="signup" ng-show="ShowForm">
+            <div class="form-group ">
+               <label>Email Address<span>*</span> :</label>
+               <input type='email' ng-model='newUser.email' class='form-control' ng-required="true" name="email">
+          
+            <div role="alert">
+               <span class="error" ng-show="signup.email.$error.required">
+			   <font style="color:red">*</font>
+              </span>
+               <span class="error" ng-show="signup.email.$error.email"><font style="color:red">Invalid Email</font></span>
+            </div>
+            <div role="alert">
+               <span class="error" ng-show="exists">
+               <font style="color:red">User already exists</font></span>
+            </div>
+			  </div>
+			   <div class="form-group ">
+            <label>Password<span>*</span> : </label>
+            <input type='password' ng-model='newUser.password' class='form-control' ng-required="true" name="password" password-strength="newUser.password">
+            <div role="alert">
+               <span class="error" ng-show="signup.password.$error.required">
+               <font style="color:red">*</font></span>
+               <span class="help-inline" data-ng-show='signup.password.$valid && signup.password.$dirty' data-ng-class="strength">{{strength}} ! </span>
+            </div>
+			</div>
+			 <div class="form-group ">
+            <label>Confirm Password<span>*</span> : </label>
+            <input type='password' ng-model='newUser.confirmPassword' class='form-control' ng-required="true" name="confirmPassword" compare-to="newUser.password">
+            <div role="alert">
+               <span class="error" ng-show="signup.password.$error.required">
+               <font style="color:red">*</font></span>
+               <span class="error" ng-show="signup.confirmPassword.$error.compareTo">
+               <font style="color:red">Confirm Password and Password should match!</font></span>
+            </div>
+			</div>
+			 <div class="form-group">
+        
+         <button ng-disabled="!signup.$valid"  ng-click='createUser()' class="btn btn-primary">Submit</button>
+		  </div>
+</form>
+</div>
+</div>
+<div ng-show="ShowMessage">
+   <h3>Thank you!!!</h3>
+   <p>Your account request has been submitted. You will shortly receive an email with an Activation link. Click on the link in the email inorder to activate your account.</p>
+</div>
+</div>
+

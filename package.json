@@ -1,0 +1,35 @@
+{
+  "name": "raigad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "angular-material": "^1.0.6",
+    "body-parser": "^1.14.2",
+    "connect-multiparty": "^2.0.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "express-force-domain": "0.0.6",
+    "express-session": "^1.13.0",
+    "fs-extra": "^0.26.5",
+    "method-override": "^2.3.5",
+    "mongojs": "^2.3.0",
+    "mv": "^2.1.1",
+    "ng-file-upload": "^11.0.2",
+    "nodemailer": "^2.2.1",
+    "npm": "^2.14.7",
+    "passport": "^0.3.2",
+    "passport-google-oauth": "^1.0.0",
+    "path": "^0.12.7",
+    "prerender-node": "^2.2.0",
+    "sitemap": "^1.5.0",
+    "smsowl": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Pawan Gupta",
+  "license": "ISC"
+}

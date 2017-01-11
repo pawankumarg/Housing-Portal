@@ -1,0 +1,35 @@
+        img{
+            max-width: 200%;
+            height: auto;
+        }
+        .thumbnails{
+            margin-right: -40%;
+            margin-left: 20%;
+        }
+        
+        .thumbnails img{
+            display: block;
+            width: 200px;
+            height: 150px;
+        }
+        
+        .thumbnails:hover img{
+            transform: scale(0.90);
+            opacity: 0.5;
+        }
+        .thumbnails img:hover{
+                opacity: 1;
+                transform: scale(1) rotate(3deg);
+                box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+        }
+        .thumbnails a{
+            
+            float: left;
+            width: 25%;
+            padding-right: 15%;
+            padding-bottom: 3%;
+            box-sizing: border-box;
+        }
+        .delBtn{
+            background-image: url(img/ProjImg/Delete.png);
+        }

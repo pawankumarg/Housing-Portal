@@ -1,0 +1,203 @@
+<div>
+<a href="/searchproperty">Search Property</a><br/>
+<h2>Sell / Rent a Property</h2>
+
+</div>
+<br />
+<form class="form-horizontal"  name="addProperty">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Title</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" placeholder="Title" ng-model="formData.Title" ng-required="true" name="Title">
+    </div>
+     <div role="alert">
+      <span class="error" ng-show="addProperty.Title.$error.required">
+       <font style="color:red">*</font></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Built up Area:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" placeholder="Built up Area" ng-model="formData.BuiltupArea" ng-required="true" name="BuiltupArea">
+    </div>
+    <div role="alert">
+      <span class="error" ng-show="addProperty.BuiltupArea.$error.required">
+       <font style="color:red">*</font></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Per Sq. Ft. Rate</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" placeholder="Per Sq. Ft. Rate" ng-model="formData.Rate" ng-required="true" name="Rate">
+    </div>
+    <div role="alert">
+      <span class="error" ng-show="addProperty.Rate.$error.required">
+       <font style="color:red">*</font></span>
+    </div>
+  </div>
+  <div class="form-group">
+<label class="col-sm-2 control-label">Type :</label> 
+<div class="col-sm-4">
+<select class="form-control" ng-model="formData.Type" ng-required="true" name="Type">
+  <option value="1RK">1RK</option>
+  <option value="1BHK">1BHK</option>
+  <option value="2BHK">2BHK</option>
+  <option value="3BHK">3BHK</option>
+  <option value="4BHK">4BHK</option>
+  <option value="5BHK">5BHK</option>
+  <option value="6BHK">6BHK</option>
+  <option value="RowHouse">Row House</option>
+</select>
+</div>
+<div role="alert">
+      <span class="error" ng-show="addProperty.Type.$error.required">
+       <font style="color:red">*</font></span>
+    </div>
+
+</div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Society</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" placeholder="Society" ng-model="formData.Society">
+    </div>
+  </div>
+  <div class="form-group">
+<label class="col-sm-2 control-label">Location :</label> 
+<div class="col-sm-4">
+<select class="form-control" ng-model="formData.Location" ng-required="true" name="Location">
+  <option value="Alibag">Alibag</option>
+  <option value="Karjat">Karjat</option>
+  <option value="Khalapur">Khalapur</option>
+  <option value="Mahad">Mahad</option>
+  <option value="Mangaon">Mangaon</option>
+  <option value="Mhasla">Mhasla</option>
+  <option value="Murud">Murud</option>
+  <option value="Panvel">Panvel</option>
+  <option value="Pen">Pen</option>
+  <option value="Pali">Pali</option>
+  <option value="Poladpur">Poladpur</option>
+  <option value="Roha">Roha</option>
+  <option value="Shrivardhan">Shrivardhan</option>
+  <option value="Tala">Tala</option>
+  <option value="Uran">Uran</option>
+
+</select>
+</div>
+<div role="alert">
+      <span class="error" ng-show="addProperty.Location.$error.required">
+       <font style="color:red">*</font></span>
+    </div>
+<!--<div class="checkbox">
+  <label><input type="checkbox" value"Alibag" ng-model="formData.Location.Alibag">Alibag</label>
+  <label><input type="checkbox" value"Karjat" ng-model="formData.Location.Karjat">Karjat</label>
+  <label><input type="checkbox" value"Khalapur" ng-model="formData.Location.Khalapur">Khalapur</label>
+  <label><input type="checkbox" value"Mahad" ng-model="formData.Location.Mahad">Mahad</label>
+  <label><input type="checkbox" value"Mangaon" ng-model="formData.Location.Mangaon">Mangaon</label>
+  <label><input type="checkbox" value"Mhasla" ng-model="formData.Location.Mhasla">Mhasla</label>
+  <label><input type="checkbox" value"Murud" ng-model="formData.Location.Murud">Murud</label>
+  <label><input type="checkbox" value"Pali" ng-model="formData.Location.Pali">Pali</label>
+  <label><input type="checkbox" value"Panvel" ng-model="formData.Location.Panvel">Panvel</label>
+  <label><input type="checkbox" value"Pen" ng-model="formData.Location.Pen">Pen</label>  
+  <label><input type="checkbox" value"Poladpur" ng-model="formData.Location.Poladpur">Poladpur</label>
+  <label><input type="checkbox" value"Roha" ng-model="formData.Location.Roha">Roha</label>  
+  <label><input type="checkbox" value"Shrivardhan" ng-model="formData.Location.Shrivardhan">Shrivardhan</label>
+  <label><input type="checkbox" value"Tala" ng-model="formData.Location.Tala">Tala</label>
+  <label><input type="checkbox" value"Uran" ng-model="formData.Location.Uran">Uran</label>
+</div>-->
+</div>
+  
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-4">
+    	<textarea class="form-control" rows="3" placeholder="Description" ng-model="formData.Description"></textarea>     
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Builder</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" placeholder="Builder" ng-model="formData.Builder">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Phone No.</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" placeholder="Phone No." ng-model="formData.PhoneNo" ng-required="true" name="PhoneNo">
+    </div>
+    <div role="alert">
+      <span class="error" ng-show="addProperty.PhoneNo.$error.required">
+       <font style="color:red">*</font></span>
+    </div>
+  </div>
+<!--    <div class="form-group">
+    <label class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-4">
+      <input type="email" class="form-control" placeholder="Email" ng-model="formData.Email" ng-required="true" name="Email">
+    </div>
+    <div role="alert">
+      <span class="error" ng-show="addProperty.Email.$error.required">
+       <font style="color:red">*</font></span>
+    </div>
+  </div> -->
+<div class="form-group">
+    <label class="col-sm-2 control-label">I am a</label>
+		<div class="col-sm-4">      
+			<select class="form-control">
+		  	<option>Owner</option>
+		  	<option>Dealer</option>
+		  	<option>Builder</option>
+		  
+			</select>
+    	</div>
+  </div>
+  <div class="form-group"><label class="col-sm-2 control-label">Want to :</label> 
+    <div class="col-sm-4">
+<select class="form-control" ng-model="formData.Purpose" ng-required="true" name="Purpose">
+  <option value="Buy">Sell</option>
+  <option value="Rent">Rent</option>
+  
+</select>
+</div>
+<div role="alert">
+      <span class="error" ng-show="addProperty.Purpose.$error.required">
+       <font style="color:red">*</font></span>
+    </div>
+</div>
+ <!--  <div class="form-group">
+    <label class="col-sm-2 control-label">File input</label>
+     
+
+       <div class="button" ngf-select ng-model="formData.files" ngf-multiple="true">
+    <button>Choose File</button></div></div> -->
+<div class="form-group">
+        <label class="col-sm-2 control-label">File input</label>
+
+        <div class="col-sm-2" >
+            <div class="button" ngf-select ng-model="files" ngf-multiple="true" ngf-resize="{width: 50, height: 30, quality: .5, ratio: '2:1', centerCrop: false}">
+                <button class="form-control">Choose File</button>
+            </div>
+
+        </div>
+      </div>
+
+
+  </div>
+  <div class="form-group">
+       <div class="row">
+               <div class="col col-md-8 push-down-sm">
+                   <div class="thumbnails">
+                     <div id="GallaryDiv"></div>
+                   </div>
+                   
+           </div>
+      </div>
+      <div class="col-sm-offset-2 col-sm-4">
+                <input type="button" class="btn btn-default" ng-disabled="!addProperty.$valid"  ng-click="FinalSubmit()" value="Submit"></input>
+      </div>
+      </div>
+  <!-- <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">      
+      <input type="button" class="btn btn-default" ng-disabled="!addProperty.$valid" ng-click="submitProperty()" value="Submit"></input>
+    </div>
+  </div> -->
+</form>
+

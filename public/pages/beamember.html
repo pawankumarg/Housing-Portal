@@ -1,0 +1,102 @@
+<style>
+ .inputIconDemo {
+    min-height: 48px; }
+md-input-container:not(.md-input-invalid) > md-icon.email {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.name {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.phone {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.address {
+    color: #00c0ef; }
+ md-input-container.md-input-invalid > md-icon.email,
+ md-input-container.md-input-invalid > md-icon.name,
+  md-input-container.md-input-invalid > md-icon.phone {
+    color: red; }
+</style>
+<div class="container insidepage-wrap">
+      <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Be a Member
+                </h1>
+              
+            </div>
+        </div>
+    <div class="row" ng-show="ShowForm">
+      <form ng-submit="search()" name="memberForm">
+      <div class="col-md-5">
+
+      <div layout="column" layout-padding ng-cloak name="member">
+  <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <!-- Use floating label instead of placeholder -->
+      <label>Name (required)</label>
+      <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+      <input ng-model="formData.name" type="text" ng-required="true">
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block">
+      <label>Phone (required)</label>
+      <md-icon md-svg-src="img/icons/ic_phone_24px.svg" class="phone"></md-icon>
+      <input ng-model="formData.phone" type="text" md-maxlength="10" ng-required="true">
+    </md-input-container>
+    <md-input-container class="md-block">
+      <!-- Use floating placeholder instead of label -->
+      <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+      <input ng-model="formData.email" type="email" placeholder="Email (required)" ng-required="true">
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block" >
+      <label>Address</label>
+      <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;" class="address"></md-icon>
+      <input ng-model="formData.address" type="text" >      
+    </md-input-container>
+    
+  </md-content>
+</div></div>
+<div class="col-md-5">
+<div layout="column" layout-padding ng-cloak>
+  <md-input-container class="md-block" flex-gt-sm>
+            <label>Select your Skills</label>
+            <md-select ng-model="formData.Specialist">
+              <md-option value="Repairing">Repairing</md-option>
+              <md-option value="Beauty">Beauty</md-option>
+            </md-select>
+    </md-input-container>
+    <div layout="column" layout-wrap layout-gt-sm="row" ng-show="formData.Specialist == 'Repairing'">
+        <div flex-xs flex="50">
+            <md-checkbox ng-model="formData.Skills.AC" aria-label="AC">AC</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.AirCoolers" aria-label="Air Coolers">Air Coolers</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.Desktop" aria-label="Desktop">Desktop</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.Geyser" aria-label="Geyser">Geyser</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.MicrowaveOven" aria-label="Microwave Oven">Microwave Oven</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.Laptop" aria-label="Laptop">Laptop</md-checkbox>
+          </div>
+          <div flex-xs flex="50">
+            <md-checkbox ng-model="formData.Skills.Mobile" aria-label="Mobile">Mobile</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.Refrigerator" aria-label="Refrigerator">Refrigerator</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.TV" aria-label="TV">TV</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.WashingMachine" aria-label="Washing Machine">Washing Machine</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.WaterPurifier" aria-label="Water Purifier">Water Purifier</md-checkbox>
+          </div>
+        </div>
+    </div>
+    <div layout="column" layout-wrap layout-gt-sm="row" ng-show="formData.Specialist == 'Beauty'">
+        <div flex-xs flex="50">
+            <md-checkbox ng-model="formData.Skills.HairCare" aria-label="Hair Care">Hair Care</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.SkinExcellence" aria-label="Skin Excellence">Skin Excellence</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.BeautyPack" aria-label="Beauty Pack">Beauty Pack</md-checkbox>
+            <md-checkbox ng-model="formData.Skills.All" aria-label="Can do Everything">Can do Everything</md-checkbox>
+          
+          </div>          
+        </div>
+  </div>
+    </form>
+  </div>
+
+  <div class="row" align="center">
+      <md-button class="btn btn-primary" ng-disabled="!memberForm.$valid" ng-show="!ShowMessage" ng-click="FinalSubmit()">Submit</md-button>
+      <md-content flex layout-padding ng-show="ShowMessage" style="color:#00c0ef">
+        {{message}}
+    </md-content>
+</div>
+     </div>
+</div>

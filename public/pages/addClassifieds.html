@@ -1,0 +1,123 @@
+<style>
+md-input-container:not(.md-input-invalid) > md-icon.email {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.name {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.phone {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.address {
+    color: #00c0ef; }
+ md-input-container.md-input-invalid > md-icon.email,
+ md-input-container.md-input-invalid > md-icon.name,
+  md-input-container.md-input-invalid > md-icon.phone {
+    color: red; }
+</style>
+<div class="container">
+
+<h1 class="page-header">Submit a free Ad</h1>
+
+<form class="form-horizontal"  name="addAds">
+  <md-content class="md-no-momentum">
+    <div layout-gt-sm="row">
+    <md-input-container class="md-icon-float md-block" flex-gt-sm>    
+      <label>Ad Title (required)</label>     
+      <input ng-model="formData.Title" type="text" ng-required="true">
+    </md-input-container>
+     <md-input-container class="md-icon-float md-block" flex-gt-sm>    
+      <label>Price (in Rs)</label>     
+      <input ng-model="formData.Price" type="number" ng-required="true">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+            <label>Category (Required):</label>
+            <md-select ng-model="formData.Category" ng-required="true">
+                <md-option value="Bikes">Bikes</md-option>
+                <md-option value="Cars">Cars</md-option>
+                <md-option value="Electronics">Electronics</md-option>
+                <md-option value="Fashion">Fashion</md-option> 
+                <md-option value="Furniture">Furniture</md-option>
+                <md-option value="Games">Games</md-option>
+                <md-option value="Mobiles">Mobiles</md-option>                
+                <md-option value="Vehicles">Vehicles</md-option>           
+            </md-select>
+    </md-input-container>
+  </div>
+    <md-input-container class="md-block">
+          <label>Description</label>          
+          <textarea ng-model="formData.Description" rows="5" md-select-on-focus ></textarea>
+    </md-input-container>
+    
+    <div layout-gt-sm="row">
+    <md-input-container class="md-icon-float md-block" flex-gt-sm>    
+      <label>Name</label>     
+      <input ng-model="formData.Name" type="text" >
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block" flex-gt-sm>
+        <label>Phone (required)</label>        
+        <input ng-model="formData.PhoneNo" md-maxlength="10" type="text" ng-required="true">
+      </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+        <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+        <input ng-model="formData.Email" type="email" placeholder="Email (required)" ng-required="true" >
+      </md-input-container>
+  </div>
+   <div layout-gt-sm="row">
+    <md-input-container class="md-icon-float md-block" flex-gt-sm>    
+      <label>City</label>     
+      <input ng-model="formData.City" type="text" >
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+            <label>District :</label>
+            <md-select ng-model="formData.District">
+               <md-option value="Alibag">Alibag</md-option>
+                <md-option value="Karjat">Karjat</md-option>
+                <md-option value="Khalapur">Khalapur</md-option>
+                <md-option value="Mahad">Mahad</md-option>
+                <md-option value="Mangaon">Mangaon</md-option>
+                <md-option value="Mhasla">Mhasla</md-option>
+                <md-option value="Murud">Murud</md-option>
+                <md-option value="Panvel">Panvel</md-option>
+                <md-option value="Pen">Pen</md-option>
+                <md-option value="Pali">Pali</md-option>
+                <md-option value="Poladpur">Poladpur</md-option>
+                <md-option value="Roha">Roha</md-option>
+                <md-option value="Shrivardhan">Shrivardhan</md-option>
+                <md-option value="Tala">Tala</md-option>
+                <md-option value="Uran">Uran</md-option>
+            </md-select>
+    </md-input-container>
+    </div>
+  </md-content>
+  
+  <div class="form-group">
+        <label class="col-sm-2 control-label">File input</label>
+
+        <div class="col-sm-2" >
+            <div class="button" ngf-select ng-model="files" ngf-multiple="true" ngf-resize="{width: 50, height: 30, quality: .5, ratio: '2:1', centerCrop: false}">
+                <button class="form-control">Choose File</button>
+            </div>
+
+        </div>
+      </div>
+
+
+  <div class="form-group">
+       <div class="row">
+               <div class="col col-md-8 push-down-sm">
+                   <div class="thumbnails">
+                     <div id="GallaryDiv"></div>
+                   </div>
+                   
+           </div>
+      </div>
+      <div class="col-sm-offset-2 col-sm-4">
+                <input type="button" class="btn btn-primary" ng-disabled="!addAds.$valid"  ng-click="FinalSubmit()" value="Submit"></input>
+      </div>
+      </div>
+  <!-- <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">      
+      <input type="button" class="btn btn-default" ng-disabled="!addProperty.$valid" ng-click="submitProperty()" value="Submit"></input>
+    </div>
+  </div> -->
+</form>
+
+</div>

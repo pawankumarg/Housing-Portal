@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="HousingApp" >
+   <head>
+      <meta name="fragment" content="!">
+      <!-- We define the SEO variables we want to dynamically update -->
+      <title>easeHousing | {{ ::seo.pageTitle }}</title>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="{{ ::seo.pageDescripton }}">
+	  <link rel="shortcut icon" href="/favicon.ico"  type="image/x-icon" rel="shortcut icon">
+      <link rel="stylesheet" href="css/housing.css" />
+      <link rel="stylesheet" href="css/angular-material.css">
+      <link rel="stylesheet" href="css/ngGallery.css">
+      <base href="/index" />
+	   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+       
+       <style type="text/css">         
+       </style>
+       
+   </head>
+   <body class="homepage bgimg">
+      <div ng-controller='NavigationController'  >
+           <div id="preloader" ng-if="preaLoader">
+              <div id="loading-center">
+                  <div id="loading-center-absolute">
+                      <div class="loader-logo"><img src="img/Home_icon_black.png" /> </div>
+                      <div class="object" id="first_object"> </div>
+                      <div class="object" id="second_object"></div>
+                      <div class="object" id="third_object"></div>
+                      
+                  </div>
+              </div>
+          </div>
+          
+         <header>
+            <div class="header-inner">
+               <div class="header-top clearfix">
+                  <div class="header-top-inner container">
+                     <div class="navbar-header">
+                        <a href="/" class="header-logo">
+                        <img src="img/logoeh.png" alt="easeHousing" />
+                        </a><!-- /.header-logo -->
+                     </div>
+                    <div class="pull-right top-nav" >
+                        <ul class="nav nav-pills" >
+                           <li><a href="/shortlistproperty" style="padding-right:10px;">
+                           <i class="fa fa-star" title="title="Login to see your Shortlisted properties" "></i></a></li>
+                           <li ng-if='!AuthenticationService.isLogged'><a href='#' id='modal-launcher' data-toggle="modal" data-target="#login-modal"><i class="fa fa-user"></i> Login</font></a></li>
+                           <li style="padding:10px 9px;color:#fff;" ng-if='AuthenticationService.isLogged'>Welcome {{AuthenticationService.email}}</li>
+                           <li ng-if='AuthenticationService.isLogged'><a href='#' ng-click="logout()">Logout</font></a></li>  
+                           <li ng-if='!AuthenticationService.isLogged'><a href='/signup'>Sign Up</a></li>                         
+                           <li >
+                              <md-button ng-click="toggleRight()" class="md-icon-button md-primary" aria-label="Settings">
+                                <md-icon md-svg-icon="img/icons/menu.svg" style="color:white"></md-icon>
+                              </md-button>
+                           </li>
+                        </ul>
+                         <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+                           <md-toolbar class="md-theme-light">
+                             <h1 class="md-toolbar-tools">Menu</h1>
+                           </md-toolbar>
+                           <md-content ng-controller="RightCtrl" layout-padding>                            
+                               
+                                 <ul style="padding-left:0px;">
+                                    <li style="padding:5px"><a href='/contactus' ng-click="close()" >Contact Us</a></li>
+                                    <li style="padding:5px"><a href='/beamember' ng-click="close()" >Join Us</a></li>
+                                    <li style="padding:5px"><a href='/AllContactUs' ng-click="close()" ng-if="AuthenticationService.isAdmin">All Contact Us</a></li>
+                                    <li style="padding:5px"><a href='/userslist' ng-click="close()" ng-if="AuthenticationService.isAdmin">Users List</a></li>
+                                    <li style="padding:5px"><a href='/sendpromosms' ng-click="close()" ng-if="AuthenticationService.isAdmin">Send Promotional SMS</a></li>
+                                 </ul>
+                                                      
+                             <md-button ng-click="close()" class="md-primary">
+                               Close Sidenav
+                             </md-button>
+                           </md-content>
+                         </md-sidenav>
+                     </div>
+                     
+                  </div>
+               </div>
+            </div>
+         </header>
+         <div class="modal fade" my-modal id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header login_modal_header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                     <h2 class="modal-title" id="myModalLabel">Login to Your Account</h2>
+                  </div>
+                  <div class="modal-body login-modal">
+                     <div class="clearfix"></div>
+                     <div id='social-icons-conatainer'>
+                        <div class='modal-body-left'>
+                           <div class="form-group">
+                              <input type="email" id="login-user" placeholder="Enter your username" value="" class="form-control login-field" ng-model='login.email' >
+                              <i class="fa fa-user login-field-icon"></i>
+                           </div>
+                           <div role="alert">
+                              <span class="error" ng-show="Email.$error.email">
+                              <font style="color:red">Invalid Email</font></span>
+                           </div>
+                           <div class="form-group">
+                              <input type="password" id="login-pass" placeholder="Password" value="" class="form-control login-field" ng-model='login.password' ng-keyup="$event.keyCode == 13 && logUserIn()">
+                              <i class="fa fa-lock login-field-icon"></i>
+                           </div>
+                           <a href="#" class="btn btn-success modal-login-btn" ng-click='logUserIn()'>Login</a>
+                           <a href="#" class="login-link text-center">Lost your password?</a>
+                           <span ng-show="invalid" class="text-center" style="color:red;padding:0 10%">Invalid Username or Password</span>
+                        </div>
+                        <div class='modal-body-right'>
+                           <div class="modal-social-icons">
+                              <a href='#' ng-click="SocialLogin('facebook')" class="btn facebook"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
+                              <a href='#' ng-click="SocialLogin('google')" class="btn google"> <i class="fa fa-google-plus modal-icons"></i> Sign In with Google </a>
+                              <!--<a href='#' ng-click="getSocialLogin()"  class="btn twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
+                                 <a href='#' class="btn btn-default linkedin"> <i class="fa fa-linkedin modal-icons"></i> Sign In with Linkedin </a>-->
+                           </div>
+                        </div>
+                        <div id='center-line'> OR </div>
+                     </div>
+                     <div class="clearfix"></div>
+                     <div class="form-group modal-register-btn">
+                        <button class="btn btn-default" ng-click="Redirect()"> New User Please Register</button>
+                     </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="modal-footer login_modal_footer">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+	  
+	
+		  
+       <div ng-view style="">
+        </div>
+      <footer>
+	     <div class="footer-top">
+			 <div class="container">
+				<div class="row">
+					  <div class="footer-nav col-md-8">
+						 <ul class="nav navbar-nav">
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="/contactus">Contact Us</a></li>
+							<li><a href="/site-map">Site Map</a></li>
+						 </ul>
+					  </div>
+					  <div class="social-icons col-md-4" >
+					  <ul class="social ">
+											   <li title="" data-placement="top" data-toggle="tooltip" class="facebook icon-circle" data-original-title="Facebook"><a href="https://www.facebook.com/easehousing/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+											<li style="display:none" title="" data-placement="top" data-toggle="tooltip" class="twitter icon-circle" data-original-title="Twitter"><a href="" target="_blank"><i class="fa fa-twitter"></i></a></li>				
+											<li style="display:none" title="" data-placement="top" data-toggle="tooltip" class="linkedin icon-circle" data-original-title="Linkedin"><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+						<li title="" data-placement="top" data-toggle="tooltip" class="home icon-circle" data-original-title="home"><a href="/"><i class="fa fa-home"></i></a></li>
+					</ul>
+					  </div>
+				</div>
+			 </div>
+			</div>
+			 <div class="site-copyright">
+			 <div class="container">
+				<div class="row">
+						<div class="col-md-12 copyrights text-center">
+						<p>
+						   Copyright &copy; easeHousing <script type="text/javascript">document.write(new Date().getFullYear())</script> 
+						</p>
+					</div>
+				</div>
+				<span id="top-link-block">
+					<a href="#top" class=" icon-circle"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+						<i class="fa fa-chevron-up" title=" Back to Top"></i>
+					</a>
+	            </span>
+			</div>
+			</div>
+      </footer>
+	
+      <link href="css/lightbox.min.css" rel="stylesheet">
+      <link href="css/ThumbGallery.css" rel="stylesheet">
+      <script src="js/jquery-1.10.2.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/angular.min.js" ></script>
+      <script type="text/javascript" src="js/ng-infinite-scroll.min.js" ></script>
+      <script type="text/javascript" src="js/angular-route.min.js" ></script>
+      <script type="text/javascript" src="js/controller/HousingController.js" ></script>
+      <script type="text/javascript" src="js/lightbox.min.js" ></script>
+      <script src="https://maps.googleapis.com/maps/api/js"></script>
+      <script type="text/javascript" src='js/ng-file-upload/dist/ng-file-upload.min.js'></script>
+      <script type="text/javascript" src='js/ng-file-upload/dist/ng-file-upload-all.min.js'></script>
+      <script type="text/javascript" src='js/ng-file-upload/dist/ng-file-upload-shim.min.js'></script>
+      <script type="text/javascript" src="js/controller/AddProperty/SubmitProperty.js" ></script>
+      <script type="text/javascript" src="js/controller/Property/SearchPropertyController.js" ></script>
+      <script type="text/javascript" src="js/controller/Property/ShortlistController.js" ></script>
+      <script type="text/javascript" src="js/controller/Property/EditPropertyController.js" ></script>
+      <script type="text/javascript" src="js/services/editproperty.js" ></script>
+      <script type="text/javascript" src="js/services/authentication.js" ></script>
+      <script type="text/javascript" src="js/controller/Login/SignupController.js"></script>
+      <script type="text/javascript" src="js/controller/Login/EditProfileController.js"></script>
+      <script type="text/javascript" src="Modules/PropertyDetails/PropertyDetailslController.js" ></script>
+      <script type="text/javascript" src="js/controller/Login/AccountActivationController.js"></script>
+      <script type="text/javascript" src="js/controller/Login/UsersListController.js"></script>
+      <script type="text/javascript" src="js/controller/Login/FacebookloginController.js"></script>
+      <script type="text/javascript" src="js/controller/Repair/RepairingController.js"></script>
+      <script type="text/javascript" src="js/controller/Beauty/BeautyController.js"></script>
+      <script type="text/javascript" src="js/controller/Classifieds/ClassifiedsController.js"></script>
+      <script type="text/javascript" src="js/controller/Classifieds/AddClassifiedsController.js"></script>
+      <script type="text/javascript" src="js/controller/Classifieds/EditClassifiedsController.js"></script>
+      <script type="text/javascript" src="js/controller/Other/Contactus.js"></script>
+      <script type="text/javascript" src="js/controller/Other/Beamember.js"></script>
+      <script type="text/javascript" src="js/controller/Other/SendPromoSMS.js"></script>
+      <script type="text/javascript" src="js/angular-messages.min.js"></script>
+      <script src="js/angular-aria.min.js"></script> 
+      <script src="js/angular-animate.min.js"></script> 
+      <script src="js/angular-material.min.js"></script>
+      <script type="text/javascript">
+         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+         
+         ga('create', 'UA-75127459-1', 'auto');
+         ga('send', 'pageview');
+         
+      </script>
+	  <script type="text/javascript">
+	  if ( ($(window).height() + 100) < $(document).height() ) {
+    $('#top-link-block').removeClass('hidden').affix({
+        // how far to scroll down before link "slides" into view
+        offset: {top:100}
+    });
+}</script>
+   </body>
+</html>

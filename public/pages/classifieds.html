@@ -1,0 +1,128 @@
+    <style type="text/css">
+    .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 80%;
+            margin: auto;
+           
+        }
+    </style>
+ <div class="container insidepage-wrap">
+	    <div class="row">
+            <div class="col-md-7">
+                <h1 class="page-header">Classifieds
+                   
+                </h1>
+               	
+            </div>
+            <div class="col-md-5">
+            	<button class="btn" style="position:fixed;bottom:22px;right:51px;z-index:999;border-radius:25px;background-color:#00c0ef;color:white;font-size:20px" ng-click="go()" >Add a free Ad</button>
+            </div>
+        </div>
+		
+		  <div class="row">		     	
+			<div class="col-md-11">
+				<div id="filter-panel" class=" filter-panel">
+				   <div class="panel panel-default">
+					  <div class="panel-body">
+					    <div class="search-panel">
+					    
+						 	<md-content class="md-no-momentum">
+						 		<div layout-gt-sm="row">
+							    <md-input-container class="md-icon-float md-block" flex-gt-sm>    
+							      <label>Search Products </label>     
+							      <input ng-model="products" type="text" >
+							    </md-input-container>
+							     <md-input-container class="md-block" flex-gt-sm>
+					            	<label>Category :</label>
+							            <md-select ng-model="Category">
+							            	<md-option value="Bikes">Bikes</md-option>
+							            	<md-option value="Cars">Cars</md-option>
+							               <md-option value="Electronics">Electronics</md-option>
+							                <md-option value="Fashion">Fashion</md-option> 
+							                <md-option value="Furniture">Furniture</md-option>
+							                <md-option value="Games">Games</md-option>
+							                <md-option value="Mobiles">Mobiles</md-option>                							                         
+							            </md-select>
+							    </md-input-container>
+							    <md-input-container class="md-block" flex-gt-sm>
+							    	 <button class="btn btn-primary" type="button" ng-click="SearchClassifieds()">Search</button>
+							    	 <button class="btn btn-primary" type="button" ng-click="all()" style="margin-left:10px">Clear</button>
+							    </md-input-container>
+							    <div>
+							</md-content>
+                          
+						 </div>
+					  </div>
+				   </div>
+				</div>
+<div class="project-list" infinite-scroll="myPagingFunction()" infinite-scroll-disabled='busy || noMoreData'>
+	<div class="row" ng-repeat="classified in classifieds" style="border:1px solid #ddd">
+	   <div class="col-md-3"  >
+			<a href="#myCarousel" ng-click="oepnModalPopUp(classified.ImagePath)">
+			<img ng-src="{{classified.ImagePath[0].src}}" class="thumbnail" height="160px" width="194px" data-toggle="modal" data-target="#myModal" /></a>{{::classified.ImagePath.length}} images		
+			
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-6">
+					<h3><label id="propTitle" >{{::classified.Title}}</label></h3>	
+				</div>
+				<div class="col-md-6">
+					 <h3><label id="propTitle" style="color:orangered">{{::classified.Price | currency:"&#8377;":0}}</label></h3>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-md-10">
+				   <label>Description :</label>{{::classified.Description}} 
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+				   <label>Location :</label>{{::classified.City}}, {{::classified.District}}   
+				</div>
+				<div class="col-md-6">
+				   <label>Contact Info :</label> {{::classified.Name}}<br />{{::classified.PhoneNo}}, {{::classified.Email}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+				   <label>Category :</label> {{::classified.Category}}
+				</div>
+				<div class="col-md-6">
+				   <label>Posted On :</label> {{::classified.Created | date:longDate}}
+				</div>
+			</div>
+			
+			<div>
+		
+		 
+		   <button class="btn btn-success" ng-click="Update(classified._id)" ng-show='(AuthenticationService.isLogged && AuthenticationService.isAdmin) || (AuthenticationService.isLogged && AuthenticationService.email==classified.Email)'>Edit</button>
+				<button class="btn btn-danger" ng-confirm-click="Are you sure you want to delete this ad?" ng-click="Delete(classified._id)" ng-show='(AuthenticationService.isLogged && AuthenticationService.isAdmin) || (AuthenticationService.isLogged && AuthenticationService.email==classified.Email)'>Delete</button>
+		</div>
+		</div>
+		
+		
+	</div>	
+		
+</div>
+             
+	    </div>
+   </div>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" ng-click="removeslider()">&times;</button>
+                            <h4 class="modal-title">Photo Gallery</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><div id="MyDiv"></div></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="removeslider()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>

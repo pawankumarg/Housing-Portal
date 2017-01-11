@@ -1,0 +1,68 @@
+<style>
+ .inputIconDemo {
+    min-height: 48px; }
+md-input-container:not(.md-input-invalid) > md-icon.email {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.name {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.phone {
+    color: #00c0ef; }
+md-input-container:not(.md-input-invalid) > md-icon.message {
+    color: #00c0ef; }
+ md-input-container.md-input-invalid > md-icon.email,
+ md-input-container.md-input-invalid > md-icon.name,
+  md-input-container.md-input-invalid > md-icon.phone {
+    color: red; }
+</style>
+<div class="container insidepage-wrap">
+	    <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Contact Us
+                </h1>
+              
+            </div>
+        </div>
+		<div class="row">
+         
+			<div class="col-md-5">
+<div ng-show="ShowForm">
+<form class="form-horizontal"  name="contact">
+	 <md-content class="md-no-momentum">
+    	<md-input-container class="md-icon-float md-block">
+	      	<!-- Use floating label instead of placeholder -->
+	      	<label>Name (required)</label>
+	      	<md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+	      	<input ng-model="formData.Name" type="text" ng-required="true">
+    	</md-input-container>		
+		<md-input-container class="md-icon-float md-block">
+	      <label>Phone (required)</label>
+	      <md-icon md-svg-src="img/icons/ic_phone_24px.svg" class="phone"></md-icon>
+	      <input ng-model="formData.PhoneNo" md-maxlength="10" type="text" ng-required="true">
+	    </md-input-container>
+	    <md-input-container class="md-block">
+	      <!-- Use floating placeholder instead of label -->
+	      <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+	      <input ng-model="formData.Email" type="email" placeholder="Email (required)" ng-required="true">
+    	</md-input-container>
+    	<md-input-container class="md-block">
+          <label>Message (required)</label>
+          <md-icon md-svg-src="img/icons/ic_insert_drive_file_24px.svg" class="message"></md-icon>
+          <textarea ng-model="formData.Message" md-maxlength="500" rows="5" md-select-on-focus ng-required="true"></textarea>
+        </md-input-container>
+
+    </md-content>
+      <div class="col-sm-offset-2 col-sm-4">
+                <input type="button" class="btn btn-primary" ng-disabled="!contact.$valid"  ng-click="FinalSubmit()" value="Submit"></input>
+      </div>
+   
+</form>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-11">
+<div ng-show="ShowMessage">
+ <font style="color:#3A629E">{{message}}</font>
+</div>
+</div>
+</div>

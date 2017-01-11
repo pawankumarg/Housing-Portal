@@ -1,0 +1,296 @@
+
+
+<style>
+    #coverimage{
+               /*margin: -25px;*/
+    }
+    #jumboton{
+            height: 70%;
+            background-color: #b3ffd9;
+        margin-bottom: auto;
+    }
+    
+    .snapshot {
+    background: #37383A;
+    border-top: 1px solid #37383A;
+    border-bottom: 1px solid #37383A;
+    height:90px;
+}
+    .snapContains{
+        color:white;
+    }
+    .fontIcon{
+        margin-top: 70%;
+    }
+    #dvMap {
+    width: 450px;
+    height: 450px;
+        border: 1px solid;
+}
+   
+    #map {
+    height:520px;
+    width:800px;
+    }
+ .container1{
+        background-color: ghostwhite;
+    }
+    .container2{
+       color: floralwhite;
+    }
+    .collapsHead{
+            color: #039be5;
+    background-color: azure;
+    }
+    .collapsHeadIcon{
+            color: #FF5400;
+    }
+    .headTitle{
+        color: #291919;
+    }
+   
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  
+<body >
+    <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<!--    <script type="text/javascript" src="../js/controller/PropertyDetails/PropertyDetailslController.js"></script>	-->
+          
+
+<!--
+<div class="jumbotron text-center" id="jumboton" >
+  
+    <h1 ng-bind="AllData.Title"></h1>
+    
+</div>
+-->
+<div class="row" id="coverimage">
+   <div class="col-md-12">
+      <img style="width: 100%; height: 400px;" ng-src="{{AllData.ImagePath[0].src}}" class="thumbnail"></img>
+   </div>
+</div>
+<div class="snapshot">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="row">
+               <div class="snapContains">
+                  <div class="col-md-3">
+                     <div class="row">
+                        <div class="col-md-2">
+                           <div class="fontIcon">
+                              <i class="fa fa-map-marker fa-3x"></i>
+                           </div>
+                        </div>
+                        <div class="col-md-10">
+                           <h5>Address</h5>
+                           <span >{{::AllData.Address}},{{::AllData.City}}</span>,
+                           <span >{{::AllData.Location}}</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-3">
+                     <div class="row">
+                        <div class="col-md-2">
+                           <div class="fontIcon">
+                              <i class="fa fa-map-marker fa-3x"></i>
+                           </div>
+                        </div>
+                        <div class="col-md-10">
+                           <h5>Type</h5>
+                           <span ng-bind="AllData.Type"></span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-3">
+                     <div class="row">
+                        <div class="col-md-2">
+                           <div class="fontIcon">
+                              <i class="fa fa-map-marker fa-3x"></i>
+                           </div>
+                        </div>
+                        <div class="col-md-10">
+                           <h5>Rate per sq.ft :</h5>
+                           <span ng-bind="AllData.Rate"></span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-3">
+                     <div class="row">
+                        <div class="col-md-2">
+                           <div class="fontIcon">
+                              <i class="fa fa-map-marker fa-3x"></i>
+                           </div>
+                        </div>
+                        <div class="col-md-10">
+                           <h5>Address</h5>
+                           <span ng-bind="AllData.Title"></span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+		   <a class="btn-floating btn-large red">
+		   <i class="large material-icons">mode_edit</i>
+		   </a>
+		</div>
+	<hr>
+		<div class="page-header text-center ">
+		   <label class="headTitle" >
+			  <h3> Description </h3>
+		   </label>
+		   <div class="page-body">
+			  <label>
+				 <h6>{{AllData.Description}}</h6>
+			  </label>
+			  <br><br>
+		   </div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+   <div class="panel"></div>
+   <div class="panel-heading text-center ">
+      <label class="headTitle">
+         <h2> Other Details </h2>
+      </label>
+   </div>
+   <div class="panel-body">
+      <div class="row">
+         <div class="col-md-5">
+            <div class="row">
+               <div class="col-md-12">
+                  <img style="width: 100%;" ng-src="{{AllData.ImagePath[0].src}}" class="img-responsive"></img>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-7">
+            <ul class="collapsible" data-collapsible="accordion">
+               <li>
+                  <div class="collapsible-header collapsHead">
+                     <i class="material-icons collapsHeadIcon" >info_outline</i>About <span ng-bind="AllData.Title"></span>
+                  </div>
+                  <div class="collapsible-body">
+                     <div class="row">
+                        <div class="col s2">
+                           <label>
+                              <h6>Builder : </h6>
+                           </label>
+                        </div>
+                        <div class="col s10"><span ng-bind="AllData.Builder"></span></div>
+                     </div>
+                     <div class="row">
+                        <div class="col s2">
+                           <label>
+                              <h6>City : </h6>
+                           </label>
+                        </div>
+                        <div class="col s10"><span ng-bind="AllData.City"></span></div>
+                     </div>
+                  </div>
+               </li>
+               <li>
+                  <div class="collapsible-header collapsHead" ><i class="material-icons collapsHeadIcon">place</i>About Property</div>
+                  <div class="collapsible-body">
+                     <div class="row">
+                        <div class="col s2">
+                           <label>
+                              <h6>Property Type : </h6>
+                           </label>
+                        </div>
+                        <div class="col s10"><span ng-bind="AllData.Type"></span></div>
+                     </div>
+                     <div class="row">
+                        <div class="col s2">
+                           <label>
+                              <h6>Rate : </h6>
+                           </label>
+                        </div>
+                        <div class="col s10"><span ng-bind="AllData.Rate"></span></div>
+                     </div>
+                     <div class="row">
+                        <div class="col s2">
+                           <label>
+                              <h6>Builtup Area : </h6>
+                           </label>
+                        </div>
+                        <div class="col s10"><span ng-bind="AllData.BuiltupArea"></span></div>
+                     </div>
+                  </div>
+               </li>
+               <li>
+                  <div class="collapsible-header collapsHead"><i class="material-icons collapsHeadIcon">perm_phone_msg</i>Contact Information</div>
+                  <div class="collapsible-body">
+                     <div class="row">
+                        <div class="col s2">
+                           <label>
+                              <h6>Email Id : </h6>
+                           </label>
+                        </div>
+                        <div class="col s10"><span ng-bind="AllData.Email"></span></div>
+                     </div>
+                     <div class="row">
+                        <div class="col s2">
+                           <label>
+                              <h6>Phone Number : </h6>
+                           </label>
+                        </div>
+                        <div class="col s10"><span ng-bind="AllData.PhoneNo"></span></div>
+                     </div>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <div class="panel-footer">Here is footer</div>
+   </div>
+</div>
+
+<br>
+<hr>
+<div class="row">
+   <div class="panel">
+      <div class="panel-heading text-center ">
+         <label class="headTitle">
+            <h2>Image Gallery</h2>
+         </label>
+      </div>
+      <div class="panel-body">
+         <div class="row">
+            <div class="col-md-12">
+               <ul>
+                  <li ng-repeat="image in AllData.ImagePath" style="display: inline-block;">
+                     <a href="{{image.src}}" data-lightbox="gallary"><img ng-src="{{image.src}}" style="width: 27%;" /></a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="row">
+<div class="panel-heading text-center headTitle">
+   <label class="headTitle">
+      <h2>Location Map</h2>
+   </label>
+</div>
+<!--<my-Maps id="dvMap"></my-Maps>-->
+<div class="col-md-12">
+<div id="map" > </div >
+</div>
+</div>
+		
+    </body>
